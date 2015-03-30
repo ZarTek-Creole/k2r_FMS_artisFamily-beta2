@@ -1,0 +1,1 @@
+play-1.2.6/play.bat run --%prod -Dprecompiled=true
