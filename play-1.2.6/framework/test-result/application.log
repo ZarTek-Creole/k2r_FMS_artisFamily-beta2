@@ -1,0 +1,15 @@
+06 Aug 2013 21:32:42,071 DEBUG ~ Creating new CacheManager with default config
+06 Aug 2013 21:32:42,075 DEBUG ~ Configuring ehcache from classpath.
+06 Aug 2013 21:32:42,080 DEBUG ~ Configuring ehcache from ehcache.xml found in the classpath: file:/Users/jroper/src/play1/framework/classes/ehcache.xml
+06 Aug 2013 21:32:42,082 DEBUG ~ Configuring ehcache from URL: file:/Users/jroper/src/play1/framework/classes/ehcache.xml
+06 Aug 2013 21:32:42,082 DEBUG ~ Configuring ehcache from InputStream
+06 Aug 2013 21:32:42,095 DEBUG ~ Ignoring ehcache attribute xmlns:xsi
+06 Aug 2013 21:32:42,095 DEBUG ~ Ignoring ehcache attribute xsi:noNamespaceSchemaLocation
+06 Aug 2013 21:32:42,131 DEBUG ~ propertiesString is null.
+06 Aug 2013 21:32:42,134 DEBUG ~ No disk store path defined. Skipping disk store path conflict test.
+06 Aug 2013 21:32:42,134 DEBUG ~ No CacheManagerEventListenerFactory class specified. Skipping...
+06 Aug 2013 21:32:42,191 DEBUG ~ No BootstrapCacheLoaderFactory class specified. Skipping...
+06 Aug 2013 21:32:42,191 DEBUG ~ CacheWriter factory not configured. Skipping...
+06 Aug 2013 21:32:42,193 DEBUG ~ No CacheExceptionHandlerFactory class specified. Skipping...
+06 Aug 2013 21:32:42,215 DEBUG ~ Initialised cache: play
+06 Aug 2013 21:32:42,215 DEBUG ~ CacheDecoratorFactory not configured for defaultCache. Skipping for 'play'.

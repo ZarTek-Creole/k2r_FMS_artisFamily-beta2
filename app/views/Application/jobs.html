@@ -1,0 +1,63 @@
+#{extends 'main.html' /}
+#{set title:'Monitoring' /}
+#{set monitoring:true /}
+
+#{set 'moreScripts'}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".cancel").click(function() {
+            var jobId = $(this).attr('data-id');
+            $.get("/jobs/cancel/" + jobId, function(data) {
+                document.location.href = "/jobs";
+            });
+        });
+    });
+</script>
+#{/set}
+
+<div class="container">
+    <h1>Monitoring jobs</h1>
+    <br/>
+    <table class="table table-bordered">
+    #{list items:releases, as:'release'}
+        #{set job = release.getJob() /}
+        <tr>
+            <td #{if !job}colspan="2"#{/if}>
+                <b>${release.name}</b><br/>
+                <b>${release.downloads.size()}/${release.numberOfEpisode}</b> Episodes<br/>
+                #{if job}
+                    <button class="btn btn-danger cancel" data-id="${job.jobId}">Cancel</button>
+                #{/if}
+                #{elseif release.hosts.size() == 0}
+                    You must configure hosts for your job.<br/>
+                    <a href="http://localhost:9000/admin/ftphostdirs" class="btn btn-success">Configure</a>
+                #{/elseif}
+                #{else}
+                    #{if release.nextExecutionDate()}
+                    Next scheduled execution : ${release.nextExecutionDate().format("dd/MM/yyyy HH:mm", java.util.TimeZone.getTimeZone("Europe/Paris"))}<br/>
+                    #{/if}
+                    <a class="btn btn-success start" href="/jobs/start/${release.id}">Manual start</a>
+                #{/else}
+            </td>
+            #{if job}
+            <td style="font-size: 13px">
+                #{if job.currentReleaseName}
+                    <b><u>${job.currentReleaseName}</u></b><br/>
+                #{/if}
+                #{list items:job.info(), as:'message'}
+                    ${message}<br/>
+                #{/list}
+                #{else}
+                    Aucun message
+                #{/else}
+            </td>
+            #{/if}
+        </tr>
+    #{/list}
+    #{else}
+        <tr>
+            <td>Currently no job running</td>
+        </tr>
+    #{/else}
+    </table>
+</div>

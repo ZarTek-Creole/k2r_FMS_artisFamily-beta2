@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>${title}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans|Fredericka+the+Great' rel='stylesheet' type='text/css'>
+    <link href="@{'/public/stylesheets/bootstrap.css'}" rel="stylesheet">
+    <link href="@{'/public/javascripts/video/video-js.min.css'}" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 70px;
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+
+    #{get 'moreStyles' /}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="@{'/public/assets/js/html5shiv.js'}"></script>
+    <script src="@{'/public/assets/js/respond.min.js'}"></script>
+    <![endif]-->
+    <script src="@{'/public/javascripts/jquery-1.10.2.min.js'}"></script>
+    <script src="@{'/public/javascripts/bootstrap.min.js'}"></script>
+    #{get 'moreScripts' /}
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">FMS Project</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li #{if series}class="active"#{/if}><a href="/">My Series</a></li>
+                <li #{if monitoring}class="active"#{/if}><a href="/jobs">Monitoring</a></li>
+                <li #{if admin}class="active"#{/if}><a href="/admin">Administration</a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</div>
+
+#{doLayout /}
+
+<div style="margin-top: 40px">
+    <div class="container">
+    <hr style="margin-bottom: 0"/>
+        <div style="padding-top: 10px">FMS downloader <b>k2r</b>@Artis family 2013</div>
+        <br/><br/>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+</body>
+</html>

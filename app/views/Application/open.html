@@ -1,0 +1,89 @@
+#{extends 'main.html' /}
+#{set title:'Video' /}
+#{set series:true /}
+#{set moreScripts}
+<script src="@{'/public/javascripts/video/video.js'}"></script>
+
+<script type="text/javascript">
+    $(".player").jPlayer( {
+        swfPath: "/public/javascripts/jplayer/jPlayer",
+        ready: function () {
+            var uri = $(this).attr("data-id");
+            console.log("---- " + uri + " -----");
+            $(this).jPlayer("setMedia", {
+                m4v: uri
+            });
+        }
+    });
+</script>
+#{/set}
+
+<div style="background-color: #5a5a5a; margin-top: -20px; margin-bottom: 30px">
+    <div class="container">
+        <div style="padding-top: 30px; padding-bottom: 30px; font-size: 42px; color: #ffffff">
+            <table>
+                <tr>
+                    <td style="font-family: 'Fredericka the Great', cursive;">
+                        <h1>${job.name}</h1>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<!-- Main component for a primary marketing message or call to action -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <table class="table" style="width: 90%">
+                %{ for(int i = job.numberOfEpisode; i >= 1; i--) { }%
+                    <tr>
+                        #{set real = job.getDownload(i) /}
+                        <td #{if mainEpisode.number == i}style="border-left: 8px solid #428bca"#{/if}>
+                            <div style="font-size: 16px">
+                            #{if real}
+                            <a href="/open/${job.id}/${real.id}">Episode ${String.format("%02d", i)}</a>
+                            #{/if}
+                            #{else}
+                            <span style="color: #ECECEC">Episode ${String.format("%02d", i)}</span>
+                            #{/else}
+                            </div>
+                        </td>
+                    </tr>
+                %{ } }%
+            </table>
+        </div>
+
+        <div class="col-md-9">
+            <table class="table">
+                <tr>
+                    <td><span style="font-size: 24px">${job.name} - Episode ${mainEpisode.number}</span></td>
+                    <td style="text-align: right">
+                        #{if !mainEpisode.seen}
+                            <a href="/mark/view/${job.id}/${mainEpisode.id}" class="btn btn-success">Mark as view</a>
+                        #{/if}
+                        #{else}
+                            <a href="/mark/unview/${job.id}/${mainEpisode.id}" class="btn btn-warning">Mark as unview</a>
+                        #{/else}
+                    </td>
+                </tr>
+                #{set dir = job.getDirectoryOf(mainEpisode.number) /}
+                #{if dir}
+                <tr>
+                    <td colspan="2">
+                        <span style="font-size: 14px">File located in ${dir}</span>
+                    </td>
+                </tr>
+                #{/if}
+            </table>
+            <video id="example_video" class="video-js vjs-default-skin" controls preload="auto" width="100%">
+                <source src="/read/${job.id}/${mainEpisode.number}"/>
+            </video>
+        </div>
+    </div>
+
+</div>

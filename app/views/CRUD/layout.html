@@ -1,0 +1,28 @@
+#{extends 'main.html' /}
+#{set title:'Administration' /}
+#{set admin:true /}
+
+<div class="container">
+    <h1>Administration</h1>
+
+#{if request.actionMethod != 'index'}
+    <div id="crudBreadcrumb">
+        #{crud.navigation /}
+    </div>
+#{/if}
+
+#{if flash.success}
+    <div class="crudFlash flashSuccess">
+    ${flash.success}
+    </div>
+#{/if}
+#{if flash.error || error}
+    <div class="crudFlash flashError">
+    ${error ?: flash.error}
+    </div>
+#{/if}
+
+    <div id="crudContent">
+    #{doLayout /}
+    </div>
+</div>

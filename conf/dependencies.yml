@@ -1,0 +1,6 @@
+# Application dependencies
+
+require:
+    - play
+    - play -> crud
+    - com.github.junrar -> junrar 0.7

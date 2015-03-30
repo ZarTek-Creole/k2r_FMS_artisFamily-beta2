@@ -1,0 +1,2 @@
+run start.bat or start.sh
+go to localhost:9000

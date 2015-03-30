@@ -1,0 +1,24 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+*      /admin              module:crud
+
+# Home page
+GET     /                                       Application.index
+GET     /jobs                                   Application.jobs
+GET     /jobs/cancel/{id}                       Application.cancelJob
+GET     /jobs/start/{id}                        Application.startJob
+GET     /read/{id}/{episode}                    Application.read
+GET     /open/{id}/{episode}                    Application.open
+GET     /mark/view/{id}/{episode}               Application.viewEpisode
+GET     /mark/unview/{id}/{episode}             Application.unviewEpisode
+
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

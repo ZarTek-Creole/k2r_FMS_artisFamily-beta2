@@ -1,0 +1,29 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+FtpHosts = My Ftp servers
+FtpHostDirs = My series job
+ReleaseJobs = My series definition
+Episodes = Already seen episode
+Excludes = My directory to excludes
+
+sfvCheck = Check files with SFV (if present) ?
+unzip = Unzip after download ?
+schedule = Scheduling time (Example : 5min, 1h, 4h, 1d)
+numberOfEpisode = Number of episodes for the series
+seen = Already view ?
+deleteAfterUnzip = Delete archive after unzip ?
+
+crud.index.objectType = Elements to configure
+crud.index.add = Add
+
+name = Name
+host = Address
+port = Port
+user = User
+password = Password
+timeout = Timeout
+passive = Passive mode ?
+mode = Connection type
+completePattern = Complete directory mask
+directory = Directory

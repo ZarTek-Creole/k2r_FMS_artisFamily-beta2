@@ -1,0 +1,23 @@
+#{extends 'CRUD/layout.html' /}
+
+#{set title:messages.get('crud.title') /}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>&{'crud.index.objectType'}</th>
+        <th width="20%">&{'crud.index.action'}</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{crud.types}
+    <tr>
+        <td style="font-size: 18px; vertical-align: middle">
+            <a href="${type.listAction}">&{type.name}</a>
+        </td>
+        <td style="text-align: right">
+            <a type="button" class="btn btn-success" href="${type.blankAction}">&{'crud.index.add', type}</a>
+        </td>
+    </tr>
+    #{/crud.types}
+    </tbody>
+</table>

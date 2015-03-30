@@ -1,0 +1,73 @@
+CompilerOracle: exclude jregex/Pretokenizer.next
+22:13:54,981 INFO  ~ Starting /Users/Julien/Documents/Projects/_TEST/Archive
+22:13:54,986 INFO  ~ Module crud is available (/Users/Julien/Documents/Projects/_TEST/Archive/./play-1.2.6/modules/crud)
+22:13:55,231 INFO  ~ Application is precompiled
+22:13:57,236 INFO  ~ Connected to jdbc:h2:/Users/Julien/Documents/Projects/_TEST/Archive/db/h2/play;MODE=MYSQL
+22:13:57,491 INFO  ~ JPA -> Adding package: org.apache.commons.net.ftp
+22:13:57,526 INFO  ~ JPA -> Adding package: org.apache.commons.net.chargen
+22:13:57,526 INFO  ~ JPA -> Adding package: org.apache.commons.net.ftp.parser
+22:13:57,526 INFO  ~ JPA -> Adding package: org.apache.commons.net.finger
+22:13:57,526 INFO  ~ JPA -> Adding package: org.apache.commons.net.imap
+22:13:57,526 INFO  ~ JPA -> Adding package: org.apache.commons.net.pop3
+22:13:57,526 INFO  ~ JPA -> Adding package: org.apache.commons.net.bsd
+22:13:57,526 INFO  ~ JPA -> Adding package: org.apache.commons.net.util
+22:13:57,526 INFO  ~ JPA -> Adding package: org.apache.commons.net.time
+22:13:57,526 INFO  ~ JPA -> Adding package: org.apache.commons.net.echo
+22:13:57,527 INFO  ~ JPA -> Adding package: org.apache.commons.net.smtp
+22:13:57,527 INFO  ~ JPA -> Adding package: org.apache.commons.net.telnet
+22:13:57,527 INFO  ~ JPA -> Adding package: org.apache.commons.net.ntp
+22:13:57,527 INFO  ~ JPA -> Adding package: org.apache.commons.net.io
+22:13:57,527 INFO  ~ JPA -> Adding package: org.apache.commons.net.whois
+22:13:57,527 INFO  ~ JPA -> Adding package: org.apache.commons.net.tftp
+22:13:57,527 INFO  ~ JPA -> Adding package: org.apache.commons.net.daytime
+22:13:57,527 INFO  ~ JPA -> Adding package: org.apache.commons.net.nntp
+22:13:57,527 INFO  ~ JPA -> Adding package: org.apache.commons.net
+22:13:57,527 INFO  ~ JPA -> Adding package: org.apache.commons.net.discard
+22:13:58,266 INFO  ~ Application 'fms' is now started !
+22:13:58,386 INFO  ~ Listening for HTTP on port 9000 ...
+22:14:03,490 ERROR ~ 
+
+@6g10309dp
+Internal Server Error (500) for request GET /
+
+Execution exception
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at play.exceptions.TemplateNotFoundException.<init>(TemplateNotFoundException.java:25)
+	at play.mvc.Controller.renderTemplate(Controller.java:671)
+	at play.mvc.Controller.renderTemplate(Controller.java:642)
+	at play.mvc.Controller.render(Controller.java:699)
+	at controllers.Application.index(Application.java:39)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more
+22:14:05,028 ERROR ~ 
+
+@6g10309e2
+Internal Server Error (500) for request GET /
+
+Execution exception
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:237)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at play.exceptions.TemplateNotFoundException.<init>(TemplateNotFoundException.java:25)
+	at play.mvc.Controller.renderTemplate(Controller.java:671)
+	at play.mvc.Controller.renderTemplate(Controller.java:642)
+	at play.mvc.Controller.render(Controller.java:699)
+	at controllers.Application.index(Application.java:39)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:557)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:508)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:484)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:479)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:161)
+	... 1 more

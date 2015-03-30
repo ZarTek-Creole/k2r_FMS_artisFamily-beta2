@@ -1,0 +1,149 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+#{set series:true /}
+#{set moreScripts}
+    <script src="@{'/public/javascripts/video/video.js'}"></script>
+
+    <script type="text/javascript">
+        $(".player").jPlayer( {
+            swfPath: "/public/javascripts/jplayer/jPlayer",
+            ready: function () {
+                var uri = $(this).attr("data-id");
+                console.log("---- " + uri + " -----");
+                $(this).jPlayer("setMedia", {
+                    m4v: uri
+                });
+            }
+        });
+    </script>
+#{/set}
+
+<div style="background-color: #5a5a5a; margin-top: -20px; margin-bottom: 30px">
+    <div class="container">
+        <div style="padding-top: 30px; padding-bottom: 30px; font-size: 42px; color: #ffffff">
+            <table>
+                <tr>
+                    <td>
+                        <img src="/public/images/tv.png" style="width: 100px"/>
+                    </td>
+                    <td style="font-family: 'Fredericka the Great', cursive;">
+                        &nbsp;&nbsp;Topsite downloader For My Series
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<!-- Main component for a primary marketing message or call to action -->
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <table class="table" style="width: 90%">
+            #{list items:releases, as:'release'}
+                <tr>
+                    <td #{if release.id == mainJob.id}style="border-left: 8px solid #428bca"#{/if}>
+                        #{if release.id == mainJob.id}
+                        ${release.name}
+                        #{/if}
+                        #{else}
+                            <a href="/?release=${release.id}">${release.name}</a>
+                        #{/else}
+                    </td>
+                    <td style="text-align: right;">
+                        #{if release.isRunning()}
+                        <img src="/public/images/wait.gif"/>
+                        #{/if}
+                        #{else}
+                        <span class="glyphicon glyphicon-pause"></span>
+                        #{/else}
+                        #{if release.isEnd()}
+                        <span class="glyphicon glyphicon-saved"></span>
+                        #{/if}
+                    </td>
+                </tr>
+            #{/list}
+            </table>
+        </div>
+
+        <div class="col-md-8">
+            #{if mainJob}
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            <h4 style="padding-top: 0; margin-top: 0">Ma série : ${mainJob.name}</h4>
+                        </td>
+                        <td style="text-align: right">
+                            Dans ${mainJob.directory}
+                        </td>
+                    </tr>
+                </table>
+                <table class="table">
+                    %{
+                        for(int i = mainJob.numberOfEpisode; i >= 1; i--) {
+                    }%
+
+                    #{set currentJob = mainJob.getJob() /}
+                    #{set downloadSerie = false /}
+                    #{list items:mainJob.downloads, as:'download'}
+                        #{if download && download.number == i}
+                        #{set downloadSerie = true/}
+                        <tr>
+                            <td style="width: 30px"><span class="glyphicon glyphicon-saved"></span></td>
+                            <td><span style="#{if download.seen}text-decoration: line-through#{/if}">Episode ${String.format("%02d", download.number)}</span></td>
+                            <td><span style="#{if download.seen}text-decoration: line-through#{/if}">${download.release}</span></td>
+                            <td style="text-align: right">
+                                <span style="#{if download.seen}text-decoration: line-through#{/if}">
+                                ${download.creation.format("dd/MM/yyyy HH:mm", java.util.TimeZone.getTimeZone("Europe/Paris"))} from ${download.host.name}
+                                </span>
+                            </td>
+                            <td>
+                                <a href="/open/${mainJob.id}/${download.id}"><span class="glyphicon glyphicon-folder-open"></span></a>
+                            </td>
+                        </tr>
+                        <!--
+                        <tr>
+                            <td colspan="4">
+                                <video id="example_video_${i}" class="video-js vjs-default-skin" controls preload="auto" width="100%">
+                                    <source src="/read/${mainJob.id}/${i}" type='video/mp4' />
+                                </video>
+                            </td>
+                        </tr>
+                        -->
+                        #{/if}
+                    #{/list}
+                    #{if !downloadSerie}
+                        <tr>
+                            <td style="width: 30px">
+                                #{if currentJob && currentJob.currentReleaseNumber == i}
+                                    <img src="/public/images/wait.gif"/>
+                                #{/if}
+                                #{else}
+                                    <span class="glyphicon glyphicon-stop"></span>
+                                #{/else}
+                            </td>
+                            <td>Episode ${String.format("%02d", i)}</td>
+                            <td>
+                                #{if currentJob && currentJob.currentReleaseNumber == i}
+                                ${currentJob.currentReleaseName}
+                                #{/if}
+                                #{else}
+                                -
+                                #{/else}
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    #{/if}
+                    %{
+                        }
+                    %}
+                </table>
+            #{/if}
+        </div>
+    </div>
+
+</div>
